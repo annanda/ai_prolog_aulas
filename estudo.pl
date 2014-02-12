@@ -53,5 +53,13 @@ append([X|L1],L2,[X|L3]) :- append(L1,L2,L3).
 
 p([1,2,3,4]).
 
-member(X,[X|_]).
+/* Saber se um elemento faz parte de uma lista. 
+Se o elemento está na lista, ou ele está na cabeça da lista
+ou está na calda da lista*/
+member(X,[X|_]). 
 member(X,[_|Y]) :- member(X,Y).
+
+/* Programando a funcao member usando append*/
+member(X,Y) :- append(_,[X|_],Y). /*Um elemento é membro de uma lista se ele é a cabeça de uma parte dessa lista, ou seja, a concatenação
+de uma lista que nao me interessa qual seja, com a lista que o elemento é a cabeça (cuja calda nao me interessa), é igual a lista incial, 
+onde esta sendo a busca */
